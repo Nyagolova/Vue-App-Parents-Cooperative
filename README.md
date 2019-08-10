@@ -1,4 +1,4 @@
 # VueJSExam-ParentsCooperative
-This project is for cooperative (non-profit organization) managed by parents. With the UI they can easy manage their activities and popularize them online. 
+This project is created for cooperative (non-profit organization) managed by parents. With the UI they can easy manage their activities and popularize them online. 
 
-The project is created for SoftUni Exam - VueJS Fundamentals
+Made exclusively for SoftUni Exam - <b>VueJS Fundamentals - july 2019</b>
