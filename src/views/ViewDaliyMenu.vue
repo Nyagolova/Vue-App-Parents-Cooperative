@@ -1,5 +1,5 @@
 <template>
-  
+  <div>Daily Menu</div>
 </template>
 
 <script>

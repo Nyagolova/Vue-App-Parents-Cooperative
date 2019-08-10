@@ -1,5 +1,5 @@
 <template>
-  
+  <div>View Prices</div>
 </template>
 
 <script>

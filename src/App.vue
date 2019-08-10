@@ -1,13 +1,34 @@
 <template>
-  <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/> -->
-  </div>
+  <v-app>
+
+ 
+    <page-header></page-header>
+
+    <v-container  style="height: 650px"></v-container>
+    
+    <page-footer></page-footer>
+   
+  </v-app>
 </template>
 
-<style>
+<script>
 
+import PageHeader from './components/Common/PageHeader';
+import PageFooter from './components/Common/PageFooter';
+
+
+export default {
+  name: 'App',
+  components: {
+    PageHeader,
+    PageFooter
+  },
+  data: () => ({
+    //
+  }),
+};
+</script>
+
+<style>
+ 
 </style>

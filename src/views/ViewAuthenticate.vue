@@ -1,5 +1,5 @@
 <template>
-  
+  <div>Auth</div>
 </template>
 
 <script>
