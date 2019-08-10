@@ -1,10 +1,11 @@
 <template>
   <v-app>
 
- 
     <page-header></page-header>
 
-    <v-container  style="height: 650px"></v-container>
+    <v-container  style="height: 650px">
+      <router-view></router-view>
+    </v-container>
     
     <page-footer></page-footer>
    

@@ -19,18 +19,18 @@
                 </v-layout>
             </v-img>
         </v-container>
-
         <v-tabs
             background-color="cyan"
             dark
             centered
         >
             <v-tabs-slider color="yellow"></v-tabs-slider>
-            <v-tab>Начало</v-tab>
-            <v-tab>Седмична програма</v-tab>
-            <v-tab>Дневно меню</v-tab>
-            <v-tab>За групата</v-tab>
-            <v-tab>Цени</v-tab>
+            <v-tab to="/">Начало</v-tab>
+            <v-tab to="/weeklyschedule">Седмична програма</v-tab>
+            <v-tab to="/dailymenu">Дневно меню</v-tab>
+            <v-tab to="/about">За групата</v-tab>
+            <v-tab to="/prices">Цени</v-tab>
+            
         </v-tabs>
     </div> 
 </template>
