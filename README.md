@@ -1,4 +1,29 @@
-# VueJSExam-ParentsCooperative
-This project is created for cooperative (non-profit organization) managed by parents. With the UI they can easy manage their activities and popularize them online. 
+# exam-parents-cooperative
 
-Made exclusively for SoftUni Exam - <b>VueJS Fundamentals - july 2019</b>
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Run your tests
+```
+npm run test
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
