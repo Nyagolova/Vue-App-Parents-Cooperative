@@ -2,7 +2,7 @@
     <v-dialog v-model="show" persistent max-width="600px">
         <v-card>
             <v-card-title>
-                <span class="headline">Вход</span>
+                <span class="headline">{{authMode}}</span>
             </v-card-title>
 
             <v-card-text>
@@ -10,21 +10,31 @@
                 <v-layout wrap>
 
                     <v-flex xs12>
-                    <v-text-field v-model="username" label="Username*" required></v-text-field>
+                        <v-text-field v-model="email" label="Email*" required></v-text-field>
                     </v-flex>
                     <v-flex xs12>
-                    <v-text-field v-model="password" label="Password*" type="password" required></v-text-field>
+                        <v-text-field v-model="password" label="Password*" type="password" required></v-text-field>
+                    </v-flex>
+
+                    <v-flex xs12 v-if="showRegister">
+                        <v-text-field v-model="password" label="Password*" type="password" required></v-text-field>
+                    </v-flex>
+
+                    <v-flex xs12 centered v-if="!showRegister">
+                        <big>Нямате акаунт? - <a @click="onShowRegister()"> регистрирайте се тук </a> </big>
                     </v-flex>
 
                 </v-layout>
                 </v-container>
-                <big>Нямате акаунт? - <a> регистрирайте се тук </a> </big>
+               
             </v-card-text>
 
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click.stop="show=false">Close</v-btn>
-                <v-btn color="blue darken-1" text @click.stop="onLoginClick()">Save</v-btn>
+                <v-btn color="red darken-1" text @click.stop="onCancelClick()">Отказ</v-btn>
+
+                <v-btn v-if="showRegister" color="green darken-1" text @click.stop="onRegisterClick()">Регистрирай се</v-btn>
+                <v-btn v-else color="green darken-1" text @click.stop="onLoginClick()">Влез</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -38,8 +48,10 @@ import { authenticate } from '@/services/AuthenticationServices'
 export default {
     data () {
         return {
-            username: '',
-            password: ''
+            email: '',
+            password: '',
+            authMode: 'Вход',
+            showRegister: false
         }
     },
     props: {
@@ -57,13 +69,27 @@ export default {
     },
     mixins : [authenticate],
     methods: {
+        onCancelClick() {
+            this.authMode = 'Вход'
+            this.showRegister = false
+            this.show = false
+        },
         onLoginClick() {
-            console.log('login')
-            this.login( this.username, this.password).then(
-                this.show=false
+            this.login( this.email, this.password).then(
+                this.show = false
             ) 
-        }
-    }
+        },
+        onRegisterClick() {
+            this.register( this.email, this.password).then(
+                this.show = false
+            ) 
+        },
+        onShowRegister () {
+            this.authMode = 'Регистрирация'
+            this.showRegister = true
+        }   
+    },
+    
 }
 </script>
 
