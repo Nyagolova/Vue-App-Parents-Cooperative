@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <p>Copyright &copy; 2019 Softuni</p>
+        <p>Copyright &copy; 2019 - Z Nyagolova</p>
     </div>
 </template>
 

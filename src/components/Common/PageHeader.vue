@@ -6,19 +6,22 @@
                     <v-spacer></v-spacer>
                     <v-flex shrink>
                         <span style="float:right;">
-                            <template v-if="isAuthenticated">
-                                <a href="/movie/create">Create</a>
-                                <a href="#">Welcome testuser!</a>
-                                <a href="#">Logout</a>
+                            <template v-if="userIsAuthenticated">
+                                <span>Здравейте, Ивамка!</span>
+                                <v-btn tile outlined color="red" @click="onSignOutClick()">Logout</v-btn>
                             </template>
+
                             <template v-else>
-                                <v-btn tile outlined color="cyan">Вход / Регистрация</v-btn>
+                                <v-btn tile outlined color="cyan" @click.stop="showAuthDialog=true">Вход / Регистрация</v-btn>
+                                <auth-form v-model="showAuthDialog"></auth-form>
                             </template> 
+
                         </span>
                     </v-flex>
                 </v-layout>
             </v-img>
         </v-container>
+
         <v-tabs
             background-color="cyan"
             dark
@@ -36,15 +39,30 @@
 </template>
 
 <script>
+
+import AuthForm from '@/components/Authentication/AuthForm'
+import { authenticate } from '@/services/AuthenticationServices'
+
 export default {
-    data() {
+    data () {
         return {
-            isAuthenticated: false
+            showAuthDialog: false
+        }
+    },
+    components: {
+       AuthForm
+    },
+    mixins : [authenticate],
+    methods: {
+        onSignOutClick () {
+            this.signOut();
         }
     }
 }
 </script>
 
 <style scoped>
- 
+ span {
+    padding-right: 10px;
+ }
 </style>
