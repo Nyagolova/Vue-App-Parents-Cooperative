@@ -14,15 +14,15 @@ export const authService = {
     },
     computed: {
         userIsAuthenticated() {
-            return  this.userHasSession  
+            return this.userHasSession  
         },
     },
     created () {
         firebase.auth().onAuthStateChanged(firebaseuser => {
             if(firebaseuser) {
-                this.userHasSession = true;
+                this.userHasSession = true
             } else {
-                this.userHasSession = false;
+                this.userHasSession = false
             }
         })
     }
@@ -38,7 +38,8 @@ export const authenticate = {
                 .then(this.userHasSession = true)
         },
         signOut() {
-            return firebase.auth().signOut();
+            return firebase.auth().signOut()
+                .then(this.userHasSession = false)
         }
     } 
 };
