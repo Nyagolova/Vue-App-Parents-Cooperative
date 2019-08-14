@@ -1,9 +1,5 @@
 <template>
   <div>
-    <div>Home Page</div>
-
-
-
 
     <v-container
             class="pa-2"
