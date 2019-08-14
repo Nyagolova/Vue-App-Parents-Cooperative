@@ -17,8 +17,11 @@ div{
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0);
+    background-color: yellow;
+    width: 100%;
 }
 p {
+    padding-top: 15px;
     text-align: center;
     font-weight: bold;
 }
