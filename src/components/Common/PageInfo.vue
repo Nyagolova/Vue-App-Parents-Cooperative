@@ -4,8 +4,8 @@
       light
       max-width="900"
     >
-      <v-card-text class="headline  page-info">
-        <slot></slot>
+      <v-card-text class="page-info">
+        <big><slot></slot></big>
       </v-card-text>
     </v-card>
 </template>

@@ -17,7 +17,7 @@ div{
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0);
-    background-color: yellow;
+    background-color: #ffff62;
     width: 100%;
 }
 p {

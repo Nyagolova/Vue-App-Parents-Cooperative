@@ -1,7 +1,13 @@
 <template>
   <v-row class="fill-height">
+    <page-info>На тази страница ще намерите информация за седмичната програма и режима на малките кактусчета - техните уроци, игри, занимания, хранения и други.
+      Щракнете върху събитие от календара за повече информация.
+    </page-info>
+    
     <v-col>
         <v-sheet height="600">
+
+
           <v-calendar
             ref="calendar"
             v-model="focus"
@@ -17,7 +23,7 @@
             :weekdays="[1, 2, 3, 4, 5, 6, 0]"
             :short-intervals="true"
           ></v-calendar>
-
+          
           <v-menu
             v-model="selectedOpen"
             :close-on-content-click="false"
@@ -60,7 +66,8 @@
 </template>
 
 <script>
- 
+
+import PageInfo from '@/components/Common/PageInfo.vue'
 import { authenticate } from '@/services/AuthenticationServices'
 
 export default {
@@ -124,6 +131,9 @@ export default {
       }
     ],
   }),
+  components: {
+    PageInfo
+  },
   mixins : [authenticate],
   methods: {
     getEventColor (event) {
