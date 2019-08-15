@@ -34,9 +34,10 @@
                 :color="selectedEvent.color"
                 dark
               >
-                <v-btn icon >
+                <v-btn icon v-if="userIsAuthenticated">
                   <v-icon>mdi-pencil</v-icon>
                 </v-btn>
+ 
                 <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
               </v-toolbar>
               <v-card-text>
@@ -45,7 +46,7 @@
               <v-card-actions>
                 <v-btn
                   text
-                  color="secondary"
+                  color="red"
                   @click="selectedOpen = false"
                 >
                   Затвори
@@ -59,6 +60,9 @@
 </template>
 
 <script>
+ 
+import { authenticate } from '@/services/AuthenticationServices'
+
 export default {
  data: () => ({
     today: '2019-08-15',
@@ -120,6 +124,7 @@ export default {
       }
     ],
   }),
+  mixins : [authenticate],
   methods: {
     getEventColor (event) {
       return event.color

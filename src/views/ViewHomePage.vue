@@ -1,6 +1,8 @@
 <template>
   <div>
 
+    <page-info>На тази страница ще намерите информация за най-новите събития и дейности, които се провеждат в Кооператив "Кактусчета".</page-info>
+    
     <v-container
             class="pa-2"
             fluid
@@ -26,6 +28,7 @@
 
 <script>
 
+import PageInfo from '@/components/Common/PageInfo.vue'
 import Story from '@/components/Operative/Story.vue'
 
 export default {
@@ -41,6 +44,7 @@ export default {
         }
   },
   components: {
+    PageInfo,
     Story
   }
 }
