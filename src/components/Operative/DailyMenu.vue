@@ -1,11 +1,11 @@
 <template>
   
     <v-card
-      min-width="300"
-      color="cyan"
-      class="mt-4"
+        
+        class="mt-2"
+        outlined="true"
     >
-      <v-app-bar dark  >
+      <v-app-bar dark elevation="0" color="pink">
   
         <v-toolbar-title >
             <slot></slot>
@@ -25,33 +25,34 @@
             :key="i"
             light
             class="mt-2"
+             outlined="true"
         >
-            <v-list-item three-line>
+            <v-list-item two-line>
             <v-list-item-content class="align-self-start">
-                <v-list-item-title
-                    class="headline mb-2 "
-                    
-                    v-text="item.title"
-                >
-                </v-list-item-title>
+            <v-list-item-title 
+                class="title mb-2 font-weight-regular"
+                
+                v-text="item.title"
+            >
+            </v-list-item-title>
                 
 
-                <v-list-item-subtitle v-text="item.artist"></v-list-item-subtitle>
+            <v-list-item-subtitle v-text="item.artist"></v-list-item-subtitle>
                   
 
-                </v-list-item-content>
+            </v-list-item-content>
   
-                <v-list-item-avatar
-                  size="80"
-                  tile
-                >
-                  <v-img :src="item.src"></v-img>
-                </v-list-item-avatar>
+            <v-list-item-avatar
+                size="80"
+                tile
+            >
+                <v-img :src="item.src"></v-img>
+            </v-list-item-avatar>
                 
 
-              </v-list-item>
+            </v-list-item>
               
-            </v-card>
+        </v-card>
           <!-- </v-col>
         </v-row> -->
       </v-container>

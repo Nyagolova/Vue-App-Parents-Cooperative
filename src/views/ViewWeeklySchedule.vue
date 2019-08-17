@@ -5,10 +5,20 @@
       Щракнете върху събитие от календара за повече информация.
     </page-info>
     
-    <activities-calendar :Events="Events">
-      
-    </activities-calendar>
-
+    <v-card 
+      class="mt-4"
+      width="1000" 
+      outlined="true"
+    >
+      <!-- <v-app-bar dark  >
+        <v-toolbar-title >
+            Седмичен календар
+        </v-toolbar-title>
+        </v-app-bar> -->
+          <activities-calendar :Events="Events">
+            
+          </activities-calendar>
+        </v-card>
   </v-row>
 </template>
 

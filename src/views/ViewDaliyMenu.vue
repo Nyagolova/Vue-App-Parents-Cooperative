@@ -5,19 +5,19 @@
       Рецептите са грижливо подбрани, за да са полезни и вкусни за децата.
       Може да видите продуктите, които се използват за всяко ястие, като щракнете върху него.
     </page-info>
-
-    <v-row  >
-      
-      <v-col 
-        v-for="(day, index) in weekdays"
-        :key="index"
-      > 
-        <daily-menu :items="items">
-          {{day}}
-        </daily-menu>
-
-      </v-col>
-    </v-row>
+    
+    <v-layout justify-center>
+      <v-row >
+        <v-col  cols="4"
+          v-for="(day, index) in weekdays"
+          :key="index"
+        > 
+          <daily-menu :items="items">
+            {{day}}
+          </daily-menu>
+        </v-col>
+      </v-row>
+    </v-layout>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-    <v-col class="mt-5 pa-0">
-      <v-sheet height="600" outlined >
+    <v-col  >
+      <v-sheet height="600"   outlined >
         <v-calendar
           ref="calendar"
           v-model="focus"
