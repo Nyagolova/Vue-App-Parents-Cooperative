@@ -84,7 +84,7 @@ export default {
         "weekday": "Сряда",
         "properties": [{
                 color: '#ffff62',
-                dishImgSrc: 'http://cook4cook.com/wp-content/uploads/b/buterbrody-k-zavtraku/1.jpg',
+                dishImgSrc: 'https://recipeland.com/images/r/14715/5d00ca38eb9747328916_1024.jpg',
                 dishTitle: 'Сандвичи',
                 dishType: 'Закуска',
                 dishDescription: 'хляб, крема сирене, домати, краставици, шунка'

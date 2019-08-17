@@ -19,23 +19,24 @@
         </v-app-bar>
   
         <v-menu
-            open-on-hover
-            offset-x
-
             v-for="(dish, i) in Dishes"
             :key="i"
-            light
-            class="mt-2"
-            outlined
+
+            open-on-hover
+            offset-x
+            
+            class="dish_context_menu"
+
         >
             <template v-slot:activator="{ on }">
-                <v-container v-on="on">
-                    <v-card>
+                <v-container>
+                    <v-card outlined v-on="on" style="heigth: 400px">
                         <v-list-item>
                             <v-list-item-content class="align-self-start">
 
                                 <v-list-item-title 
                                     class="title mb-2 font-weight-regular"
+                                    :title="dish.dishTitle"
                                     v-text="dish.dishTitle"
                                 >
                                 </v-list-item-title>
@@ -57,42 +58,7 @@
                 </v-container>
             </template>
 
-
-            <v-card style="max-width: 300px">
-                <v-list>
-                    <v-list-item>
-                    <v-list-item-content>
-                        <v-list-item-title class="headline">{{dish.dishTitle}}</v-list-item-title>
-                    </v-list-item-content>
-                    </v-list-item>
-                    
-                    <v-divider></v-divider>
-                
-                    <v-row align="center" justify="center">
-                        <v-img
-                        :src="dish.dishImgSrc"
-                        aspect-ratio="1"
-                        class="grey lighten-2"
-                        max-width="300"
-                        max-height="150"
-                        ></v-img>
-                    </v-row>
-                    
-                    <v-list-item two-line>
-                        <v-list-item-content>
-                            <v-list-item-title class="title">Съставки:</v-list-item-title>
-                            {{dish.dishDescription}}
-                        </v-list-item-content>
-                    </v-list-item>
-                    
-                </v-list>
-
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn text @click="menu = false">Затвори</v-btn>
-                </v-card-actions>
-            </v-card>
-
+            <single-dish :Dish="dish"></single-dish>
 
         </v-menu>
 
@@ -101,11 +67,19 @@
 </template>
 
 <script>
+
+import SingleDish from '@/components/Operative/SingleDish.vue'
+
 export default {
+    components: {
+        SingleDish
+    },
     props: ['Dishes']
 }
 </script>
 
-<style scoped>
-
+<style>
+.dish_context_menu {
+    display: unset !important;
+}
 </style>
