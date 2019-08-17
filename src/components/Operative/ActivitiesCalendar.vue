@@ -102,19 +102,19 @@ export default {
 
 <style>
     .v-calendar-daily__head {
-    margin-right: 0 !important;
+      margin-right: 0 !important;
     }
     .v-calendar-daily__intervals-head{
-    width: 70px !important;
+      width: 70px !important;
     }
     .v-calendar-daily__intervals-body{
-    width: 70px !important;
+      width: 70px !important;
     }
     .v-calendar-daily__scroll-area {
-    overflow-y: unset !important;
+      overflow-y: unset !important;
     }
-    .col{
+    /* .col{
     border: #e0e0e0 1px solid;
     border-right: none;
-    }
+    } */
 </style>
