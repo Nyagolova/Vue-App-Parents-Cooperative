@@ -10,6 +10,12 @@
             <slot></slot>
         </v-toolbar-title>
 
+        <v-spacer></v-spacer>
+  
+        <v-btn icon v-if="userIsAuthenticated">
+          <v-icon>mdi-pencil</v-icon>
+        </v-btn>
+
       </v-app-bar>
   
       <v-container>
