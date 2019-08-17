@@ -2,10 +2,10 @@
     <div>
         <v-container text-center>
             <v-img :aspect-ratio="50/10" src="@/assets/kaktus_logo.jpg">
-                <v-layout pa-2 column fill-height  >
+                <v-layout column fill-height  >
                     <v-spacer></v-spacer>
                     <v-flex shrink>
-                        <span style="float:right;">
+                        <span class="pa-0" style="float:right;">
                             <template v-if="userIsAuthenticated">
                                 <span>Здравейте, Ивамка!</span>
                                 <v-btn tile outlined color="red" @click="onSignOutClick()">Logout</v-btn>

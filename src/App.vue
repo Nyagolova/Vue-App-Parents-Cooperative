@@ -38,4 +38,7 @@ export default {
  .theme--light.v-application{
    background-color: white !important;
  }
+ .v-application--wrap{
+   margin-bottom: 70px;
+ }
 </style>
