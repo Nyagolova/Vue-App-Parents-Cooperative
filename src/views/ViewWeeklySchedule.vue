@@ -4,8 +4,8 @@
       Щракнете върху събитие от календара за повече информация.
     </page-info>
     
-    <v-col>
-        <v-sheet height="600">
+    <v-col class="mt-5 pa-0">
+        <v-sheet height="600" outlined >
 
 
           <v-calendar
@@ -162,7 +162,17 @@ export default {
 .v-calendar-daily__head {
   margin-right: 0 !important;
 }
+.v-calendar-daily__intervals-head{
+  width: 70px !important;
+}
+.v-calendar-daily__intervals-body{
+  width: 70px !important;
+}
 .v-calendar-daily__scroll-area {
   overflow-y: unset !important;
+}
+.col{
+  border: #e0e0e0 1px solid;
+  border-right: none;
 }
 </style>

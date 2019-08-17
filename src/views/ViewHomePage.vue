@@ -3,24 +3,19 @@
 
     <page-info>На тази страница ще намерите информация за най-новите събития и дейности, които се провеждат в Кооператив "Кактусчета".</page-info>
     
-    <v-container
-            class="pa-2"
-            fluid
+    <v-container pa-0
           >
-            <v-row>
-              <v-col  v-for="Story in StriesData" 
-                    :key="Story.StoryId" >
+          
 
-                  <story 
+                  <story v-for="Story in StriesData" 
+                    :key="Story.StoryId"
                     :StoryDate="Story.StoryDate"
                     :StoryTitle="Story.StoryTitle"
                     :StoryText="Story.StoryText"
                     :StoryPhoto="Story.StoryPhoto"
                     > 
                   </story>
-
-                </v-col>
-                </v-row>
+ 
     </v-container>
 
   </div>

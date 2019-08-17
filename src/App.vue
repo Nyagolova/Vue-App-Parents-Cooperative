@@ -3,7 +3,7 @@
 
     <page-header></page-header>
 
-    <v-container  style="height: 650px">
+    <v-container  >
       <router-view></router-view>
     </v-container>
     
@@ -31,5 +31,11 @@ export default {
 </script>
 
 <style>
- 
+ .container{
+   max-width: 1000px;
+   height: auto;
+ }
+ .theme--light.v-application{
+   background-color: white !important;
+ }
 </style>

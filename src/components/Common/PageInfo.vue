@@ -2,7 +2,7 @@
     <v-card
       class="mx-auto"
       light
-      max-width="900"
+      outlined
     >
       <v-card-text class="page-info">
         <big><slot></slot></big>

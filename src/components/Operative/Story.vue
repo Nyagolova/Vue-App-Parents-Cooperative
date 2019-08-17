@@ -1,13 +1,13 @@
 <template>
-  <div>
       <v-card 
         :flat="flat"
-        :loading="loading"
+         
         :outlined="outlined"
-        :elevation="elevation"
-        :raised="raised"
+         
+        
         :max-width="maxwidth"
         :height="height"
+        class="mt-3"
       >
 
         <v-list-item>
@@ -21,7 +21,7 @@
           v-if="media"
           class="white--text"
           height="200px"
-          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+          src="https://raisingtoddlerscourageously.com/hosted/images/ab/00f6f0baa211e8bdb2590576343e33/Copy-of-Untitled.png"
         >
         </v-img>
   
@@ -35,7 +35,6 @@
           <v-btn outlined color="cyan">Прочети повече</v-btn>
         </v-card-actions>
       </v-card>
-  </div>
 </template>
 
 <script>
@@ -46,10 +45,8 @@ export default {
         media: true,
         loading: false,
         actions: true,
-        outlined: false,
-        elevation: undefined,
-        raised: false,
-        maxwidth: 900,
+        outlined: true,
+        maxwidth: 1000,
         height: undefined,
     }),
 }
