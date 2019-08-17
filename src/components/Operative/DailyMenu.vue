@@ -2,18 +2,19 @@
   
     <v-card
       min-width="300"
+      color="cyan"
       class="mt-4"
     >
-      <v-app-bar dark color="pink">
+      <v-app-bar dark  >
   
-        <v-toolbar-title>
+        <v-toolbar-title >
             <slot></slot>
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
   
         <v-btn icon v-if="userIsAuthenticated">
-          <v-icon>mdi-pencil</v-icon>
+          <v-icon >mdi-pencil</v-icon>
         </v-btn>
 
       </v-app-bar>
@@ -22,16 +23,18 @@
         <v-card
             v-for="(item, i) in items"
             :key="i"
-            :color="item.color"
             light
             class="mt-2"
         >
             <v-list-item three-line>
             <v-list-item-content class="align-self-start">
-                <span><v-list-item-title
-                class="headline mb-2"
-                v-text="item.title"
-                ></v-list-item-title></span>
+                <v-list-item-title
+                    class="headline mb-2 "
+                    
+                    v-text="item.title"
+                >
+                </v-list-item-title>
+                
 
                 <v-list-item-subtitle v-text="item.artist"></v-list-item-subtitle>
                   
@@ -62,6 +65,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

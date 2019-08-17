@@ -34,19 +34,19 @@ export default {
     weekdays: ['Понеделник','Вторник','Сряда','Четврътък','Петък','Събота'],
     items: [
       {
-        color: 'yellow',
+        color: '#ffff62',
         src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Muesli.jpg/220px-Muesli.jpg',
         title: 'Овесени ядки',
         artist: 'Закуска',
       },
       {
-        color: 'yellow',
+        color: '#ffff62',
         src: 'http://assets.kulinaria.bg/attachments/pictures-images/0000/1918/MAIN-vegetarianska-musaka.jpg?1431936459',
         title: 'Мусака',
         artist: 'Обяд',
       },
       {
-        color: 'yellow',
+        color: '#ffff62',
         src: 'https://www.spendwithpennies.com/wp-content/uploads/2019/04/Fruit-Salad-SWP-500x500.jpg',
         title: 'Плодове',
         artist: 'Следобедна закуска',
