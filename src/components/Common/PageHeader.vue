@@ -41,7 +41,7 @@
 <script>
 
 import AuthForm from '@/components/Authentication/AuthForm'
-import { authenticate } from '@/services/AuthenticationServices'
+import { authService, authenticate } from '@/services/AuthenticationServices'
 
 export default {
     data () {
@@ -52,7 +52,7 @@ export default {
     components: {
        AuthForm
     },
-    mixins : [authenticate],
+    mixins : [authService, authenticate],
     methods: {
         onSignOutClick () {
             this.signOut();

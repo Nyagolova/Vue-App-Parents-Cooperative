@@ -62,7 +62,7 @@
 
 <script>
 
-import { authenticate } from '@/services/AuthenticationServices'
+import { authService, authenticate } from '@/services/AuthenticationServices'
 
 export default {
     props: ['Events'],
@@ -76,7 +76,7 @@ export default {
         selectedElement: null,
         selectedOpen: false
     }),
-    mixins : [authenticate],
+    mixins : [authService, authenticate],
     methods: {
         getEventColor (event) {
         return event.color

@@ -2,12 +2,14 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify'
-import { authService } from '@/services/AuthenticationServices'
+
+import { firestorePlugin, rtdbPlugin } from 'vuefire'
+Vue.use(firestorePlugin, rtdbPlugin )
 
 Vue.config.productionTip = false
 
-Vue.mixin(authService);
 
+import './services/firebaseInit'
 
 new Vue({
   router,

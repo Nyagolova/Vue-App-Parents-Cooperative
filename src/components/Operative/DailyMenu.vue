@@ -70,10 +70,14 @@
 
 import SingleDish from '@/components/Operative/SingleDish.vue'
 
+import { authService } from '@/services/AuthenticationServices'
+
+
 export default {
     components: {
         SingleDish
     },
+    mixins: [authService],
     props: ['Dishes']
 }
 </script>

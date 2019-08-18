@@ -1,10 +1,4 @@
-import config from '@/config/config'
-
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-
-firebase.initializeApp(config.firebaseConfig);
+import { db } from '@/services/firebaseInit'
 
 export const authService = {
     data() {
@@ -18,7 +12,7 @@ export const authService = {
         },
     },
     created () {
-        firebase.auth().onAuthStateChanged(firebaseuser => {
+        db.auth().onAuthStateChanged(firebaseuser => {
             if(firebaseuser) {
                 this.userHasSession = true
             } else {
@@ -31,14 +25,15 @@ export const authService = {
 export const authenticate = {
     methods: {
         register(email, password) {
-            return firebase.auth().createUserWithEmailAndPassword(email, password)
+            return db.auth().createUserWithEmailAndPassword(email, password)
         },
         login(email, password) {
-            return firebase.auth().signInWithEmailAndPassword(email, password)
+            console.log('login')
+            return db.auth().signInWithEmailAndPassword(email, password)
                 .then(this.userHasSession = true)
         },
         signOut() {
-            return firebase.auth().signOut()
+            return db.auth().signOut()
                 .then(this.userHasSession = false)
         }
     } 
