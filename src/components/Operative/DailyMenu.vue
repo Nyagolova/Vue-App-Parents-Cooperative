@@ -19,7 +19,7 @@
         </v-app-bar>
   
         <v-menu
-            v-for="(dish, i) in Dishes"
+            v-for="(dish, i) in MealsByDay"
             :key="i"
 
             open-on-hover
@@ -46,7 +46,6 @@
                                 >
                                 </v-list-item-subtitle>
                                 
-
                             </v-list-item-content>
                 
                             <v-list-item-avatar size="80">
@@ -78,7 +77,7 @@ export default {
         SingleDish
     },
     mixins: [authService],
-    props: ['Dishes']
+    props: ['MealsByDay']
 }
 </script>
 
