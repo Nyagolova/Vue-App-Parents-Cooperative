@@ -3,7 +3,7 @@
 
     <page-info>На тази страница ще намерите информация за най-новите събития и дейности, които се провеждат в Кооператив "Кактусчета".</page-info>
     
-    <v-container pa-0 >
+    <v-container pa-0 v-if="isStoriesDataReady">
       <story v-for="Story in Stories_Data" 
         :key="Story.StoryId"
         :StoryDate="Story.StoryDate"
@@ -12,8 +12,10 @@
         :StoryPhoto="Story.StoryPhoto"
         > 
       </story>
- 
     </v-container>
+    <div v-else>
+        <v-text-field color="cyan" loading disabled></v-text-field>
+    </div>
 
   </div>
 </template>

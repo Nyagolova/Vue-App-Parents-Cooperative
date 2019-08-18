@@ -6,15 +6,17 @@
     </page-info>
     
     <v-card 
+      v-if="isWeeklyScheduleDataReady"
       class="mt-4"
       width="1000" 
       outlined
     >
       <activities-calendar :Events="WeeklySchedule_Data">
-        
       </activities-calendar>
-      
     </v-card>
+    <div v-else>
+        <v-text-field color="cyan" loading disabled></v-text-field>
+    </div>
   </v-row>
 </template>
 

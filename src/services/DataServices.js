@@ -7,7 +7,7 @@ export const DailyMenuService = {
         }
     },
     computed: {
-        isDataReady () {
+        isDailyMenuDataReady () {
             return this.DailyMenuService_Data.length !== 0
         } 
     },
@@ -23,7 +23,7 @@ export const WeeklyScheduleService = {
         }
     },
     computed: {
-        isDataReady () {
+        isWeeklyScheduleDataReady () {
             return this.WeeklySchedule_Data.length !== 0
         } 
     },
@@ -39,7 +39,7 @@ export const StoriesService = {
         }
     },
     computed: {
-        isDataReady () {
+        isStoriesDataReady () {
             return this.Stories_Data.length !== 0
         } 
     },

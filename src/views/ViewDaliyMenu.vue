@@ -6,7 +6,7 @@
       Може да видите продуктите, които се използват за всяко ястие, като щракнете върху него.
     </page-info>
 
-    <v-layout justify-center v-if="this.isDataReady" >
+    <v-layout justify-center v-if="this.isDailyMenuDataReady" >
       <v-row >
         <v-col  cols="4"
           v-for="(day, index) in DailyMenuService_Data"
