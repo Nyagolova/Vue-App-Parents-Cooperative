@@ -11,7 +11,7 @@
           :now="today"
           :type="type"
           :first-interval="first"
-                  :interval-count="count"
+          :interval-count="count"
           @click:event="showEvent"
           :weekdays="[1, 2, 3, 4, 5, 6, 0]"
           :short-intervals="true"
@@ -113,8 +113,5 @@ export default {
     .v-calendar-daily__scroll-area {
       overflow-y: unset !important;
     }
-    /* .col{
-    border: #e0e0e0 1px solid;
-    border-right: none;
-    } */
+
 </style>
