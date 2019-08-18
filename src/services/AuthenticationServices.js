@@ -1,4 +1,4 @@
-import { db } from '@/services/firebaseInit'
+import { app } from '@/services/firebaseInit'
 
 export const authService = {
     data() {
@@ -12,7 +12,7 @@ export const authService = {
         },
     },
     created () {
-        db.auth().onAuthStateChanged(firebaseuser => {
+        app.auth().onAuthStateChanged(firebaseuser => {
             if(firebaseuser) {
                 this.userHasSession = true
             } else {
@@ -25,15 +25,15 @@ export const authService = {
 export const authenticate = {
     methods: {
         register(email, password) {
-            return db.auth().createUserWithEmailAndPassword(email, password)
+            return app.auth().createUserWithEmailAndPassword(email, password)
         },
         login(email, password) {
             console.log('login')
-            return db.auth().signInWithEmailAndPassword(email, password)
-                .then(this.userHasSession = true)
+            return app.auth().signInWithEmailAndPassword(email, password)
+                .then(res => {console.log(res); this.userHasSession = true})
         },
         signOut() {
-            return db.auth().signOut()
+            return app.auth().signOut()
                 .then(this.userHasSession = false)
         }
     } 

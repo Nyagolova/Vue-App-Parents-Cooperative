@@ -2,6 +2,8 @@ import config from '@/config/config'
 
 import { initializeApp } from 'firebase';
 
-export const db = initializeApp(config.firebaseConfig);
+export const app = initializeApp(config.firebaseConfig);
+
+export const db = app.database();
 
 

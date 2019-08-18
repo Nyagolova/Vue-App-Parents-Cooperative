@@ -80,7 +80,11 @@ export default {
     }),
     mixins : [authService, authenticate],
     firebase: {
-      todos: db.database().ref('CactusEvents'),
+      todos: db.ref('/CactusEvents/'),
+    },
+    created () {
+      console.log(db)
+      //this.$rtdbBind(db.ref('/CactusEvents/')).then();
     },
     methods: {
         getEventColor (event) {
@@ -102,6 +106,7 @@ export default {
         nativeEvent.stopPropagation()
         },
     },
+    
 }
 </script>
 
