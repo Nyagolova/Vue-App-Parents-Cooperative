@@ -16,7 +16,7 @@
         <v-img
           class="white--text"
           height="200px"
-          src="https://raisingtoddlerscourageously.com/hosted/images/ab/00f6f0baa211e8bdb2590576343e33/Copy-of-Untitled.png"
+          :src="StoryPhoto"
         >
         </v-img>
   
