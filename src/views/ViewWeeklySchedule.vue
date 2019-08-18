@@ -34,7 +34,7 @@ export default {
     }
   },
   firebase: {
-    Events: db.ref('/CactusEvents/'),
+    Events: db.ref('CactusEvents'),
   }
 }
 

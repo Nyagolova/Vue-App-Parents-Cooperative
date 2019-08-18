@@ -19,7 +19,7 @@
         </v-app-bar>
   
         <v-menu
-            v-for="(dish, i) in MealsByDay"
+            v-for="(dish, i) in DailyMenu"
             :key="i"
 
             open-on-hover
@@ -75,7 +75,7 @@ export default {
         SingleDish
     },
     mixins: [authService],
-    props: ['MealsByDay']
+    props: ['DailyMenu']
 }
 </script>
 

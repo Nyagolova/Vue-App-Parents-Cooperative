@@ -9,10 +9,10 @@
     <v-layout justify-center v-if="this.isDataReady" >
       <v-row >
         <v-col  cols="4"
-          v-for="(day, index) in MealsByDay"
+          v-for="(day, index) in DailyMenuService_Data"
           :key="index"
         > 
-          <daily-menu :MealsByDay="day.properties">
+          <daily-menu :DailyMenu="day.properties">
             {{day.weekday}}
           </daily-menu>
         </v-col>
@@ -28,26 +28,15 @@
 <script>
 import PageInfo from '@/components/Common/PageInfo.vue'
 import DailyMenu from '@/components/Operative/DailyMenu.vue'
-import { db } from '@/services/firebaseInit'
+
+import { DailyMenuService } from '@/services/DataServices.js'
 
 export default {
     components: {
         PageInfo,
         DailyMenu
     },
-    data: () => ({
-        MealsByDay: [],
-        dataReady: false
-    }),
-    computed : {
-        isDataReady () {
-            return this.MealsByDay.length !== 0
-        } 
-    },
-    firebase: {
-        MealsByDay: db.ref('CactusDailyMenu')
-    },
-
+    mixins : [DailyMenuService]
 }
 </script>
 
