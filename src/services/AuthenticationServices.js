@@ -28,9 +28,8 @@ export const authenticate = {
             return app.auth().createUserWithEmailAndPassword(email, password)
         },
         login(email, password) {
-            console.log('login')
             return app.auth().signInWithEmailAndPassword(email, password)
-                .then(res => {console.log(res); this.userHasSession = true})
+                .then(this.userHasSession = true)
         },
         signOut() {
             return app.auth().signOut()

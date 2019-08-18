@@ -24,9 +24,7 @@
 
             open-on-hover
             offset-x
-            
             class="dish_context_menu"
-
         >
             <template v-slot:activator="{ on }">
                 <v-container>

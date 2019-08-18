@@ -63,7 +63,6 @@
 <script>
 
 import { authService, authenticate } from '@/services/AuthenticationServices'
-import { db } from '@/services/firebaseInit'
 
 export default {
     props: ['Events'],
@@ -76,16 +75,8 @@ export default {
         selectedEvent: {},
         selectedElement: null,
         selectedOpen: false,
-        todos: []
     }),
     mixins : [authService, authenticate],
-    firebase: {
-      todos: db.ref('/CactusEvents/'),
-    },
-    created () {
-      console.log(db)
-      //this.$rtdbBind(db.ref('/CactusEvents/')).then();
-    },
     methods: {
         getEventColor (event) {
         return event.color
