@@ -10,9 +10,10 @@
       width="1000" 
       outlined
     >
-      <activities-calendar :Events="Events">
+      <activities-calendar :Events="WeeklySchedule_Data">
         
       </activities-calendar>
+      
     </v-card>
   </v-row>
 </template>
@@ -21,21 +22,14 @@
 
 import PageInfo from '@/components/Common/PageInfo.vue'
 import ActivitiesCalendar from '@/components/Operative/ActivitiesCalendar.vue'
-import { db } from '@/services/firebaseInit'
+import { WeeklyScheduleService } from '@/services/DataServices'
 
 export default {
   components: {
     PageInfo,
     ActivitiesCalendar
   },
-  data () {
-    return {
-      Events: []
-    }
-  },
-  firebase: {
-    Events: db.ref('CactusEvents'),
-  }
+  mixins: [WeeklyScheduleService],
 }
 
 </script>
