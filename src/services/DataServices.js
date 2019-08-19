@@ -47,3 +47,24 @@ export const StoriesService = {
         Stories_Data: db.ref('CactusNews')
     } 
 };
+
+export const GroupInfoService = {
+    data() {
+        return {
+            Members_Data: [],
+            Gallery_Data: []
+        }
+    },
+    computed: {
+        isGalleryDataReady () {
+            return this.Gallery_Data.length !== 0
+        },
+        isMembersDataReady () {
+            return this.Members_Data.length !== 0
+        } 
+    },
+    firebase: {
+        Gallery_Data: db.ref('CactusGallery'),
+        Members_Data: db.ref('CactusMembers')
+    } 
+};
