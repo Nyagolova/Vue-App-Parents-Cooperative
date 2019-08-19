@@ -8,7 +8,7 @@
                 v-for="(item,i) in items"
                 :key="i"
                 :src="item.src"
-                style="width:500px;height:auto;"
+                style="height:auto;"
             >
                 <v-app-bar dark elevation="0" color="pink">
                     <v-toolbar-title >

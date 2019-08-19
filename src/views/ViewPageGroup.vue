@@ -7,18 +7,24 @@
       Не се притеснявайте да ни пишете или звъните на показаните контакти! 
     </page-info>
     
-    <cooperative-gallery > </cooperative-gallery>
+    <v-row>
+      <cooperative-gallery > </cooperative-gallery>
+
+      <members></members>
+    </v-row>
   </div>
 </template>
 
 <script>
 import PageInfo from '@/components/Common/PageInfo.vue'
 import CooperativeGallery from '@/components/Operative/CooperativeGallery.vue'
+import Members from '@/components/Operative/Members.vue'
 
 export default {
   components: {
     PageInfo,
-    CooperativeGallery
+    CooperativeGallery,
+    Members
   }
 }
 </script>
