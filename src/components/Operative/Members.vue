@@ -53,7 +53,7 @@
                         color="pink"
                         label
                         text-color="white"
-                        :href="member.contacts.email"
+                        :href="'mailto:' + member.contacts.email"
                     >
                         <v-icon left>mdi-email</v-icon>
                         Email
