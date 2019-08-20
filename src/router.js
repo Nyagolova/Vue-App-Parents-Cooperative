@@ -5,6 +5,7 @@ import ViewDailyMenu from './views/ViewDaliyMenu'
 import ViewPageGroup from './views/ViewPageGroup'
 import ViewPrices from './views/ViewPrices'
 import ViewWeeklySchedule from './views/ViewWeeklySchedule'
+import PageNotFound from './components/Common/PageNotFound'
 
 Vue.use(Router)
 
@@ -14,6 +15,15 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'home',
+      component: ViewHomePage
+    },
+    { 
+      path: "*", 
+      component: PageNotFound 
+    },
+    {
+      path: '/home',
       name: 'home',
       component: ViewHomePage
     },
