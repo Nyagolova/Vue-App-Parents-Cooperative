@@ -15,11 +15,14 @@
                 </div>
                 </div>
                 <div id="error-container" class="center-text">
-                <h2 id="error" >Къде изчезноха всички?</h2>
+                <h2 id="error" >Къде изчезнaха всички?</h2>
                 <p>Каквото и да търсите, няма да го намерите тук.</p>
 
                 <v-container mt-12>
-                    <v-btn outlined color="cyan" to="/">ВЪРНИ СЕ В НАЧАЛОТО</v-btn>
+                    <v-btn outlined color="cyan" to="/">
+                      <v-icon left>mdi-home</v-icon>
+                      ВЪРНИ СЕ В НАЧАЛОТО
+                    </v-btn>
                 </v-container>
                 
                 </div>
@@ -39,7 +42,6 @@ export default {
 #not-found-wrapper{
   /* background-color: #00bcd4 ; */
   color: #00bcd4;
-  font-family: Sans-Serif; 
   padding: 2%;
 }
 

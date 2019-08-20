@@ -21,6 +21,14 @@
                 </span>
             </v-card-text>
 
+            <v-card-actions mt-4>
+                <v-spacer></v-spacer>
+                <v-btn outlined color="cyan" to="/">
+                    <v-icon left>mdi-home</v-icon>
+                    ВЪРНИ СЕ В НАЧАЛОТО
+                </v-btn>
+            </v-card-actions>
+
         </v-container>
         <v-container v-else>
             <v-text-field color="cyan" loading ></v-text-field>
