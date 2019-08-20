@@ -3,13 +3,17 @@ import { app } from '@/services/firebaseInit'
 export const authService = {
     data() {
         return {
-            userHasSession: false
+            userHasSession: false,
+            authError: ''
         }
     },
     computed: {
         userIsAuthenticated() {
             return this.userHasSession  
         },
+        authenticationError() {
+            return this.authError
+        }
     },
     created () {
         app.auth().onAuthStateChanged(firebaseuser => {
@@ -29,7 +33,8 @@ export const authenticate = {
         },
         login(email, password) {
             return app.auth().signInWithEmailAndPassword(email, password)
-                .then(this.userHasSession = true)
+                .then(() => {this.userHasSession = true; this.authError = '';})
+                .catch( err => {this.authError = err })
         },
         signOut() {
             return app.auth().signOut()
