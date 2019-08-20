@@ -5,7 +5,6 @@
         :height="height"
         class="mt-3"
       >
-
         <v-list-item>
             <v-list-item-content>
                 <v-list-item-title class="headline">{{StoryTitle}}</v-list-item-title>
@@ -22,7 +21,7 @@
   
         <v-card-text>
             <span class="text--primary">
-                {{StoryText}}
+                {{trimmedStoryText}}
             </span>
         </v-card-text>
 
@@ -39,7 +38,17 @@ export default {
         loading: false,
         maxwidth: 1000,
         height: undefined,
+        maxStoryTextLetters: 200
     }),
+    computed: {
+      trimmedStoryText: function () {
+        if(this.StoryText.length > this.maxStoryTextLetters) {
+          return this.StoryText.slice(0, this.maxStoryTextLetters) + " ...";
+        } else {
+          return this.StoryText
+        }
+      }
+    }
 }
 </script>
 
