@@ -3,6 +3,7 @@
         <v-carousel v-if="isGalleryDataReady"
             height="400"
             hide-delimiter-background
+            cycle
         >
             <v-carousel-item
                 v-for="(item,i) in Gallery_Data"

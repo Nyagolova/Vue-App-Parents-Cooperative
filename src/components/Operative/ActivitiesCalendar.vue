@@ -9,12 +9,13 @@
           :event-color="getEventColor"
           :event-margin-bottom="3"
           :now="today"
-          :type="type"
+          type="week"
           :first-interval="first"
           :interval-count="count"
           @click:event="showEvent"
+          @click="testfnct"
           :weekdays="[1, 2, 3, 4, 5, 6, 0]"
-          :short-intervals="true"
+          short-intervals
         >
         </v-calendar>
           
@@ -35,9 +36,9 @@
               dark
             >
               <v-btn icon v-if="userIsAuthenticated">
-                <v-icon>mdi-pencil</v-icon>
+                <v-icon>mdi-delete</v-icon>
               </v-btn>
-  
+
               <v-toolbar-title v-html="selectedEvent.name">
               </v-toolbar-title>
             </v-toolbar>
@@ -67,8 +68,8 @@ import { authService, authenticate } from '@/services/AuthenticationServices'
 export default {
     props: ['Events'],
     data: () => ({
-        today: '2019-08-15',
-        focus: '2019-08-15',
+        today: '2019-08-19',
+        focus: '2019-08-19',
         type: 'week',
         count: 12,
         first: 7,
@@ -79,24 +80,27 @@ export default {
     mixins : [authService, authenticate],
     methods: {
         getEventColor (event) {
-        return event.color
+          return event.color
         },
         showEvent ({ nativeEvent, event }) {
-        const open = () => {
+          const open = () => {
             this.selectedEvent = event
             this.selectedElement = nativeEvent.target
             setTimeout(() => this.selectedOpen = true, 10)
-        }
+          }
 
-        if (this.selectedOpen) {
-            this.selectedOpen = false
-            setTimeout(open, 10)
-        } else {
-            open()
-        }
-        nativeEvent.stopPropagation()
+          if (this.selectedOpen) {
+              this.selectedOpen = false
+              setTimeout(open, 10)
+          } else {
+              open()
+          }
+          nativeEvent.stopPropagation()
         },
-    },
+      testfnct () {
+        console.log('ashdahs')
+      }
+    }
     
 }
 </script>

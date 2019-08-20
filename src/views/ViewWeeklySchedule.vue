@@ -11,12 +11,16 @@
       width="1000" 
       outlined
     >
+      <v-card-actions v-if="userIsAuthenticated">
+        <v-spacer></v-spacer>
+        <v-btn outlined color="cyan"><v-icon>mdi-plus</v-icon>Добави</v-btn>
+      </v-card-actions>
       <activities-calendar :Events="WeeklySchedule_Data">
       </activities-calendar>
     </v-card>
-    <div v-else>
-        <v-text-field color="cyan" loading disabled></v-text-field>
-    </div>
+    <v-container v-else>
+        <v-text-field color="cyan" loading ></v-text-field>
+    </v-container>
   </v-row>
 </template>
 
@@ -25,13 +29,16 @@
 import PageInfo from '@/components/Common/PageInfo.vue'
 import ActivitiesCalendar from '@/components/Operative/ActivitiesCalendar.vue'
 import { WeeklyScheduleService } from '@/services/DataServices'
+import { authService, authenticate } from '@/services/AuthenticationServices'
+
+
 
 export default {
   components: {
     PageInfo,
     ActivitiesCalendar
   },
-  mixins: [WeeklyScheduleService],
+  mixins: [WeeklyScheduleService,authService, authenticate],
 }
 
 </script>
