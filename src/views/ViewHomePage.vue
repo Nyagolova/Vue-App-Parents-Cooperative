@@ -10,6 +10,7 @@
         :StoryTitle="Story.StoryTitle"
         :StoryText="Story.StoryText"
         :StoryPhoto="Story.StoryPhoto"
+        :StoryID="Story.StoryId"
         > 
       </story>
     </v-container>

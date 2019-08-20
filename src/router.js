@@ -6,6 +6,7 @@ import ViewPageGroup from './views/ViewPageGroup'
 import ViewPrices from './views/ViewPrices'
 import ViewWeeklySchedule from './views/ViewWeeklySchedule'
 import PageNotFound from './components/Common/PageNotFound'
+import StoryExtended from './components/Operative/StoryExtended'
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: ViewHomePage
+    },
+    {
+      path: '/story/:id',
+      name: 'story',
+      component: StoryExtended
     },
     {
       path: '/dailymenu',

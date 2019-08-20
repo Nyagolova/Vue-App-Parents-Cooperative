@@ -26,14 +26,14 @@
         </v-card-text>
 
         <v-card-actions >
-          <v-btn outlined color="cyan">Прочети повече</v-btn>
+          <v-btn outlined color="cyan" :to="storyURL">Прочети повече</v-btn>
         </v-card-actions>
       </v-card>
 </template>
 
 <script>
 export default {
-    props: ['StoryDate','StoryTitle','StoryText','StoryPhoto'],
+    props: ['StoryDate','StoryTitle','StoryText','StoryPhoto', 'StoryID'],
     data: () => ({
         loading: false,
         maxwidth: 1000,
@@ -41,12 +41,15 @@ export default {
         maxStoryTextLetters: 200
     }),
     computed: {
-      trimmedStoryText: function () {
+      trimmedStoryText () {
         if(this.StoryText.length > this.maxStoryTextLetters) {
           return this.StoryText.slice(0, this.maxStoryTextLetters) + " ...";
         } else {
           return this.StoryText
         }
+      },
+      storyURL () {
+        return "/story/" + this.StoryID
       }
     }
 }
