@@ -24,11 +24,6 @@ export default new Router({
       component: PageNotFound 
     },
     {
-      path: '/home',
-      name: 'home',
-      component: ViewHomePage
-    },
-    {
       path: '/story/:id',
       name: 'story',
       component: StoryExtended
