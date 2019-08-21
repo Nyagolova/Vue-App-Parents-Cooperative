@@ -34,6 +34,15 @@
             <v-tab to="/about">За групата</v-tab>
             <v-tab to="/prices">Цени</v-tab>
             
+            <v-tab 
+                v-if="userIsAuthenticated" 
+                to="/admin" 
+                class="admin-tab"
+            >
+                Admin 
+                <v-icon right class="admin-icon">mdi-settings</v-icon>
+            </v-tab>
+            
         </v-tabs>
     </div> 
 </template>
@@ -65,4 +74,16 @@ export default {
  span {
     padding-right: 10px;
  }
+
+ .admin-tab {
+    color: #ffff62 !important;
+    float: right;
+    margin-left: 260px;
+    opacity: 1 !important;
+ }
+
+ .admin-icon  {
+     color: #ffff62  !important;
+     opacity: 1 !important;
+ } 
 </style>

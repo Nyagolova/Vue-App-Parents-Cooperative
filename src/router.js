@@ -4,6 +4,7 @@ import ViewHomePage from './views/ViewHomePage'
 import ViewDailyMenu from './views/ViewDaliyMenu'
 import ViewPageGroup from './views/ViewPageGroup'
 import ViewPrices from './views/ViewPrices'
+import ViewPageAdmin from './views/ViewPageAdmin'
 import ViewWeeklySchedule from './views/ViewWeeklySchedule'
 import PageNotFound from './components/Common/PageNotFound'
 import StoryExtended from './components/Operative/StoryExtended'
@@ -27,6 +28,11 @@ export default new Router({
       path: '/story/:id',
       name: 'story',
       component: StoryExtended
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: ViewPageAdmin
     },
     {
       path: '/dailymenu',

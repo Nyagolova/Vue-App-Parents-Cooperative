@@ -25,7 +25,10 @@ export const authService = {
                     .then( snapshot => 
                         {
                             var value = snapshot.val();
-                            this.userDisplayNameData = value.username
+                            if(value) {
+                                this.userDisplayNameData = value.username
+                            }  
+                            
                         }
                     )
                 this.userHasSession = true
