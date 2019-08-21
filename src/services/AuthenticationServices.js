@@ -3,17 +3,13 @@ import { app } from '@/services/firebaseInit'
 export const authService = {
     data() {
         return {
-            userHasSession: false,
-            authError: ''
+            userHasSession: false
         }
     },
     computed: {
         userIsAuthenticated() {
             return this.userHasSession  
         },
-        authenticationError() {
-            return this.authError
-        }
     },
     created () {
         app.auth().onAuthStateChanged(firebaseuser => {
@@ -30,11 +26,31 @@ export const authenticate = {
     methods: {
         register(email, password) {
             return app.auth().createUserWithEmailAndPassword(email, password)
+                .then()
+                .catch( 
+                    status => { 
+                        var registerStatusObj = {}
+                        registerStatusObj = {
+                            type: 'error',
+                            text: status.message
+                        }
+                        return registerStatusObj;
+                    }
+                );
         },
         login(email, password) {
             return app.auth().signInWithEmailAndPassword(email, password)
-                .then(() => {this.userHasSession = true; this.authError = '';})
-                .catch( err => {this.authError = err })
+                .then(this.userHasSession = true)
+                .catch( 
+                    status => { 
+                        var loginStatusObj = {}
+                        loginStatusObj = {
+                            type: 'error',
+                            text: status.message
+                        }
+                        return loginStatusObj;
+                    }
+                );
         },
         signOut() {
             return app.auth().signOut()
