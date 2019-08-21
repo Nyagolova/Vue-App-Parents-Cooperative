@@ -7,7 +7,7 @@
                     <v-flex shrink>
                         <span class="pa-0" style="float:right;">
                             <template v-if="userIsAuthenticated">
-                                <span>Здравейте, Ивамка!</span>
+                                <span v-if="userDisplayName">Здравейте, {{userDisplayName}}!</span>
                                 <v-btn tile outlined color="red" @click="onSignOutClick()">Logout</v-btn>
                             </template>
 

@@ -8,6 +8,18 @@
             <v-card-text>
                 <v-container grid-list-md>
                 <v-layout wrap>
+
+                     <v-flex xs12 v-if="showRegister">
+                        <v-text-field
+                            v-model="username"
+                            v-validate="'required|min:3'"
+                            :error-messages="errors.collect('username')"
+                            label="Username"
+                            data-vv-name="username"
+                            required
+                        ></v-text-field>
+                    </v-flex>
+
                     <v-flex xs12>
                         <v-text-field
                             v-model="email"
@@ -87,6 +99,7 @@ export default {
             email: '',
             password: '',
             passwordSecond: '',
+            username: '',
             authMode: 'Вход',
             showRegister: false,
             overlay: false,
@@ -130,7 +143,7 @@ export default {
         onRegisterClick() {
             this.overlay = true;
             this.$validator.validateAll()
-            this.register( this.email, this.password).then(
+            this.register( this.email, this.password, this.username).then(
                 status => this.authHandler(status)
             ) 
         },
