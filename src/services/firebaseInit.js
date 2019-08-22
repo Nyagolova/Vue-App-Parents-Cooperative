@@ -6,4 +6,5 @@ export const app = initializeApp(config.firebaseConfig);
 
 export const db = app.database();
 
+export const storage = app.storage();
 

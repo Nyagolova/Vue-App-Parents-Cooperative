@@ -1,4 +1,4 @@
-import { db } from '@/services/firebaseInit'
+import { db, storage } from '@/services/firebaseInit'
 
 export const DailyMenuService = {
     data() {
@@ -45,7 +45,34 @@ export const StoriesService = {
     },
     firebase: {
         Stories_Data: db.ref('CactusNews')
-    } 
+    },
+    methods : {
+        addNewStory(StoryTitle, StoryText, StoryPhoto, StoryId, StoryDate) {
+            var CactusStory = db.ref("CactusNews");
+            var StoryPhotoName = '/StoryPhotos/' + StoryPhoto.name;
+            var imagesRef = storage.ref(StoryPhotoName);
+
+            return imagesRef.put(StoryPhoto).then( () => {
+
+                this.getImageURL(StoryPhotoName).then(
+                    
+                    StoryPhotoUrl => {
+                        console.log('get file url')
+                        CactusStory.push({
+                            StoryTitle: StoryTitle,
+                            StoryText: StoryText,
+                            StoryPhoto:  StoryPhotoUrl,
+                            StoryDate: StoryDate,
+                            StoryId : StoryId
+                        }).then( console.log('story added'))
+                    }
+                )
+            });
+        },
+        getImageURL (StoryPhotoName) {
+            return storage.ref().child(StoryPhotoName).getDownloadURL() 
+        } 
+    }
 };
 
 export const GroupInfoService = {
