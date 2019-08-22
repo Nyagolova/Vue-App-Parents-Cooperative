@@ -17,7 +17,6 @@ export const authService = {
     },
     mounted () {
         app.auth().onAuthStateChanged(firebaseuser => {
-            
             if(firebaseuser) {
                 db.ref("CactusUsers")
                     .child(firebaseuser.uid)

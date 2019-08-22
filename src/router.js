@@ -9,6 +9,9 @@ import ViewWeeklySchedule from './views/ViewWeeklySchedule'
 import PageNotFound from './components/Common/PageNotFound'
 import StoryExtended from './components/Operative/StoryExtended'
 
+import { app } from '@/services/firebaseInit'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -32,7 +35,16 @@ export default new Router({
     {
       path: '/admin',
       name: 'admin',
-      component: ViewPageAdmin
+      component: ViewPageAdmin,
+      beforeEnter: (to, from , next) => {
+        app.auth().onAuthStateChanged(firebaseuser => {
+          if(firebaseuser) {
+            next();
+          } else {
+            next('/notfound')
+          }
+        })
+      }
     },
     {
       path: '/dailymenu',
@@ -55,3 +67,4 @@ export default new Router({
     }
   ]
 })
+
