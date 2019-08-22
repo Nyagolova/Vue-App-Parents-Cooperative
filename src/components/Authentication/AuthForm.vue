@@ -7,63 +7,63 @@
 
             <v-card-text>
                 <v-container grid-list-md>
-                <v-layout wrap>
+                    <v-layout wrap>
 
-                     <v-flex xs12 v-if="showRegister">
-                        <v-text-field
-                            v-model="username"
-                            v-validate="'required|min:3'"
-                            :error-messages="errors.collect('username')"
-                            label="Username"
-                            data-vv-name="username"
-                            required
-                        ></v-text-field>
-                    </v-flex>
+                        <v-flex xs12 v-if="showRegister">
+                            <v-text-field
+                                v-model="username"
+                                v-validate="'required|min:3'"
+                                :error-messages="errors.collect('username')"
+                                label="Username"
+                                data-vv-name="username"
+                                required
+                            ></v-text-field>
+                        </v-flex>
 
-                    <v-flex xs12>
-                        <v-text-field
-                            v-model="email"
-                            v-validate="'required|email'"
-                            :error-messages="errors.collect('email')"
-                            label="E-mail"
-                            data-vv-name="email"
-                            required
-                        ></v-text-field>
-                    </v-flex>
+                        <v-flex xs12>
+                            <v-text-field
+                                v-model="email"
+                                v-validate="'required|email'"
+                                :error-messages="errors.collect('email')"
+                                label="E-mail"
+                                data-vv-name="email"
+                                required
+                            ></v-text-field>
+                        </v-flex>
 
-                    <v-flex xs12>
-                        <v-text-field
-                            v-model="password" ref="password"
-                            name="password" :type="'password'"
-                            v-validate="'required|min:6'"
-                            :error-messages="errors.collect('password')"
-                            label="Password"
-                            data-vv-name="password"
-                            required
-                        ></v-text-field>
-                    </v-flex>
+                        <v-flex xs12>
+                            <v-text-field
+                                v-model="password" ref="password"
+                                name="password" :type="'password'"
+                                v-validate="'required|min:6'"
+                                :error-messages="errors.collect('password')"
+                                label="Password"
+                                data-vv-name="password"
+                                required
+                            ></v-text-field>
+                        </v-flex>
 
-                    <v-flex xs12 v-if="showRegister">
-                        <v-text-field
-                            v-model="passwordSecond" ref="passwordSecond"
-                            name="passwordSecond" :type="'password'"
-                            v-validate="'required|min:6|confirmed:password'"
-                            :error-messages="errors.collect('passwordSecond')"
-                            label="Retype password"
-                            data-vv-name="passwordSecond"
-                            required
-                        ></v-text-field>
-                    </v-flex>
+                        <v-flex xs12 v-if="showRegister">
+                            <v-text-field
+                                v-model="passwordSecond" ref="passwordSecond"
+                                name="passwordSecond" :type="'password'"
+                                v-validate="'required|min:6|confirmed:password'"
+                                :error-messages="errors.collect('passwordSecond')"
+                                label="Retype password"
+                                data-vv-name="passwordSecond"
+                                required
+                            ></v-text-field>
+                        </v-flex>
 
-                    <v-flex xs12 v-if="errorMsg">
-                        <big class="errorMsg">{{errorMsg}} </big>
-                    </v-flex>
+                        <v-flex xs12 v-if="errorMsg">
+                            <big class="errorMsg">{{errorMsg}} </big>
+                        </v-flex>
 
-                    <v-flex xs12 v-if="!showRegister">
-                        <big>Нямате акаунт? - <a @click="onShowRegister()"> регистрирайте се тук </a> </big>
-                    </v-flex>
+                        <v-flex xs12 v-if="!showRegister">
+                            <big>Нямате акаунт? - <a @click="onShowRegister()"> регистрирайте се тук </a> </big>
+                        </v-flex>
 
-                </v-layout>
+                    </v-layout>
                 </v-container>
                
             </v-card-text>   
@@ -95,7 +95,7 @@ export default {
     data () {
         return {
             name: '',
-    select: null,
+            select: null,
             email: '',
             password: '',
             passwordSecond: '',
