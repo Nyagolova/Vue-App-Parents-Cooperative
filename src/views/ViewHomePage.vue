@@ -4,7 +4,7 @@
     <page-info>На тази страница ще намерите информация за най-новите събития и дейности, които се провеждат в Кооператив "Кактусчета".</page-info>
     
     <v-container pa-0 v-if="isStoriesDataReady">
-      <story v-for="Story in Stories_Data" 
+      <story v-for="Story in Stories_SortByNewest" 
         :key="Story.StoryId"
         :StoryDate="Story.StoryDate"
         :StoryTitle="Story.StoryTitle"
@@ -31,6 +31,14 @@ export default {
   components: {
     PageInfo,
     Story
+  },
+  computed: {
+    Stories_SortByNewest() {
+      return [...this.Stories_Data].sort(function(a,b){
+        return new Date(b.StoryDate) - new Date(a.StoryDate);
+      });
+
+    }
   },
   mixins: [StoriesService]
 }

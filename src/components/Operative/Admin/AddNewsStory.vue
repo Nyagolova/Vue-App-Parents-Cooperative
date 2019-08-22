@@ -55,7 +55,7 @@ export default {
     },
     data () {
         return {
-            todayDate: new Date().toISOString().substr(0, 10),
+            todayDate: new Date().toLocaleString(),
             StoryTitle: '',
             StoryText: '',
             filedata: null,
