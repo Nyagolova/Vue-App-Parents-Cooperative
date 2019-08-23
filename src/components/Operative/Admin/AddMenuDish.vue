@@ -83,7 +83,7 @@ export default {
       dishTypesByID : {
         'Закуска' : 'Breakfast',
         'Обяд' : 'Lunch',
-        'Следобедна закуска' : 'AfternoonBreakfast'
+        'Следобедна закуска' : 'SecondBreakfast'
       },
       weekDay: '',
       dishType: '',
@@ -105,9 +105,6 @@ export default {
   methods: {
     onUploadDish() {
       this.$validator.validateAll()
-      //DishTitle, DishDescription, DishPhoto, DishType, DishWeekDay
-      console.log(this.dishType)
-      console.log(this.dishTypeID)
       this.addNewDish(this.dishTitle, this.dishDescription, this.dishTypeID, this.dishPhoto, this.weekDayID)
     } 
   }

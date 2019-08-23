@@ -11,7 +11,7 @@
         
             <v-row align="center" justify="center">
                 <v-img
-                    :src="Dish.dishImgSrc"
+                    :src="Dish.dishPhotoUrl"
                     aspect-ratio="1"
                     max-width="300"
                     max-height="150"
@@ -21,7 +21,7 @@
             <v-list-item two-line>
                 <v-list-item-content>
                     <v-list-item-title class="title">Съставки:</v-list-item-title>
-                    {{Dish.dishDescription}}
+                    {{Dish.dishDetails}}
                 </v-list-item-content>
             </v-list-item>
 

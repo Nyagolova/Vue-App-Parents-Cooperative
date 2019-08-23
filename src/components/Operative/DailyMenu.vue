@@ -47,7 +47,7 @@
                             </v-list-item-content>
                 
                             <v-list-item-avatar size="80">
-                                <v-img :src="dish.dishImgSrc"></v-img>
+                                <v-img :src="dish.dishPhotoUrl"></v-img>
                             </v-list-item-avatar>
                     
                         </v-list-item>
