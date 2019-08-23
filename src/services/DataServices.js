@@ -13,7 +13,32 @@ export const DailyMenuService = {
     },
     firebase: {
         DailyMenuService_Data: db.ref('CactusDailyMenu')
-    } 
+    },
+    methods: {
+        addNewDish(DishTitle, DishDescription, DishType, DishPhoto, DishWeekDay) {
+            var singleDish = DishWeekDay + "/" + DishType
+            var CactusMenu = db.ref("CactusMenu");
+            var DishPhotoName = '/MenuPhotos/' + DishPhoto.name;
+            var imagesRef = storage.ref(DishPhotoName);
+            return imagesRef.put(DishPhoto).then( () => {
+                this.getDishImageURL(DishPhotoName).then(
+                    DishPhototURL => {
+                        CactusMenu
+                        .child(singleDish)
+                        .set({
+                            dishTitle: DishTitle,
+                            dishDetails: DishDescription,
+                            dishPhotoUrl : DishPhototURL
+                        })
+                    }
+                )
+            });
+        },
+        getDishImageURL (DishPhotoName) {
+            return storage.ref().child(DishPhotoName).getDownloadURL() 
+        } 
+    }
+   
 };
 
 export const WeeklyScheduleService = {

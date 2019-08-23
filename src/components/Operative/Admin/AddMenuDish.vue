@@ -5,12 +5,14 @@
         <v-select
           :items="daysOfTheWeek"
           label="Ден от седмицата"
+          v-model="weekDay"
         ></v-select>
       </v-col>
       <v-col>
         <v-select
-          :items="dishType"
+          :items="dishTypes"
           label="Тип"
+          v-model="dishType"
         ></v-select>
       </v-col>
     </v-row>
@@ -50,7 +52,7 @@
         value=""
     ></v-textarea>
 
-    <v-btn outlined color="cyan" :disabled="false" @click="UploadStory()"> Добави ястие </v-btn>
+    <v-btn outlined color="cyan" :disabled="false" @click="onUploadDish()"> Добави ястие </v-btn>
 
     <v-overlay :value="overlay">
         <v-progress-circular indeterminate size="64"></v-progress-circular>
@@ -60,16 +62,54 @@
 </template>
 
 <script>
+
+import { DailyMenuService } from '@/services/DataServices'
+
+
+
 export default {
   data () {
     return {
       daysOfTheWeek: ['Понеделник', 'Вторник', 'Сряда', 'Четвъртък', 'Петък', 'Събота'],
-      dishType: ['Закуска', 'Обяд', 'Вечеря'],
+      daysOfTheWeekByID: {
+        'Понеделник': 0,
+        'Вторник': 1,
+        'Сряда': 2,
+        'Четвъртък': 3,
+        'Петък': 4,
+        'Събота' : 5,
+      },
+      dishTypes: ['Закуска', 'Обяд', 'Следобедна закуска'],
+      dishTypesByID : {
+        'Закуска' : 'Breakfast',
+        'Обяд' : 'Lunch',
+        'Следобедна закуска' : 'AfternoonBreakfast'
+      },
+      weekDay: '',
+      dishType: '',
       dishTitle: '',
       dishPhoto: null,
       dishDescription: '',
       overlay: false
     }
+  },
+  mixins: [DailyMenuService],
+  computed: {
+    weekDayID () {
+      return this.daysOfTheWeekByID[this.weekDay]
+    },
+    dishTypeID () {
+      return this.dishTypesByID[this.dishType]
+    }
+  },
+  methods: {
+    onUploadDish() {
+      this.$validator.validateAll()
+      //DishTitle, DishDescription, DishPhoto, DishType, DishWeekDay
+      console.log(this.dishType)
+      console.log(this.dishTypeID)
+      this.addNewDish(this.dishTitle, this.dishDescription, this.dishTypeID, this.dishPhoto, this.weekDayID)
+    } 
   }
 }
 </script>
