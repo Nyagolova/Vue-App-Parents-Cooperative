@@ -2,7 +2,7 @@
     <v-container>
            
             <v-row> 
-                <v-col> 
+                <v-col cols="8"> 
                     <v-text-field
                         v-model="StoryTitle"
                         v-validate="'required|min:5'"
@@ -16,8 +16,9 @@
                 <v-col> 
                     <v-file-input
                         v-model="filedata"
-                        label="File input"
+                        label="Качи снимка"
                         filled
+                        accept="image/*"
                         prepend-icon="mdi-camera"
                     ></v-file-input>
                 </v-col>
