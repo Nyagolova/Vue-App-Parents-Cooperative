@@ -17,6 +17,9 @@
                     <v-file-input
                         v-model="filedata"
                         label="Качи снимка"
+                        v-validate="'required'"
+                        :error-messages="errors.collect('filedata')"
+                        data-vv-name="filedata"
                         filled
                         accept="image/*"
                         prepend-icon="mdi-camera"
@@ -73,9 +76,11 @@ export default {
     methods: {
         UploadStory () {
             this.$validator.validateAll()
-            this.addNewStory(this.StoryTitle, this.StoryText, this.filedata, this.storyID , this.todayDate)
+            if (!this.hasErrors) {
+                this.addNewStory(this.StoryTitle, this.StoryText, this.filedata, this.storyID , this.todayDate)
+            }
         }
-    }
+    } 
 }
 </script>
 
