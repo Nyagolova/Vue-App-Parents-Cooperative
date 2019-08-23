@@ -75,10 +75,15 @@ export default {
     mixins: [StoriesService], 
     methods: {
         UploadStory () {
-            this.$validator.validateAll()
-            if (!this.hasErrors) {
-                this.addNewStory(this.StoryTitle, this.StoryText, this.filedata, this.storyID , this.todayDate)
-            }
+            this.$validator.validateAll().then(  
+                () => {
+                    if (!this.hasErrors) {
+                        console.log('3242423')
+                        this.addNewStory(this.StoryTitle, this.StoryText, this.filedata, this.storyID , this.todayDate)
+                    }
+                }
+            )
+            
         }
     } 
 }

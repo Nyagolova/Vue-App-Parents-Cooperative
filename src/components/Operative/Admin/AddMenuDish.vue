@@ -6,6 +6,9 @@
           :items="daysOfTheWeek"
           label="Ден от седмицата"
           v-model="weekDay"
+          v-validate="'required'"
+          :error-messages="errors.collect('daysOfTheWeek')"
+          data-vv-name="daysOfTheWeek"
         ></v-select>
       </v-col>
       <v-col>
@@ -13,6 +16,9 @@
           :items="dishTypes"
           label="Тип"
           v-model="dishType"
+          v-validate="'required'"
+          :error-messages="errors.collect('dishTypes')"
+          data-vv-name="dishTypes"
         ></v-select>
       </v-col>
     </v-row>
@@ -35,6 +41,9 @@
               v-model="dishPhoto"
               label="Качи снимка"
               filled
+              v-validate="'required'"
+              :error-messages="errors.collect('dishPhoto')"
+              data-vv-name="dishPhoto"
               accept="image/*"
               prepend-icon="mdi-camera"
           ></v-file-input>
@@ -44,15 +53,13 @@
     <v-textarea 
         outlined
         v-model="dishDescription"
-        v-validate="'required|min:100'"
-        :error-messages="errors.collect('dishDescription')"
-        data-vv-name="dishDescription"
+      
         name="input-7-4"
         label="Ястие описание"
         value=""
     ></v-textarea>
 
-    <v-btn outlined color="cyan" :disabled="false" @click="onUploadDish()"> Добави ястие </v-btn>
+    <v-btn outlined color="cyan" :disabled="hasErrors" @click="onUploadDish()"> Добави ястие </v-btn>
 
     <v-overlay :value="overlay">
         <v-progress-circular indeterminate size="64"></v-progress-circular>
@@ -100,12 +107,21 @@ export default {
     },
     dishTypeID () {
       return this.dishTypesByID[this.dishType]
+    },
+    hasErrors () {
+      return this.errors.items.length !== 0 ;
     }
   },
   methods: {
     onUploadDish() {
-      this.$validator.validateAll()
-      this.addNewDish(this.dishTitle, this.dishDescription, this.dishTypeID, this.dishPhoto, this.weekDayID)
+      this.$validator.validateAll().then(
+        () => {
+          if (!this.hasErrors) {
+            console.log('dasd')
+            this.addNewDish(this.dishTitle, this.dishDescription, this.dishTypeID, this.dishPhoto, this.weekDayID)
+          }
+        }
+      )
     } 
   }
 }
