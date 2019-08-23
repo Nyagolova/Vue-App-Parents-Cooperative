@@ -58,18 +58,7 @@
                         <v-icon left>mdi-email</v-icon>
                         Email
                     </v-chip>
-                    <v-text-field placeholder="Изпрати запитване">
-                    </v-text-field>
-                    <v-spacer></v-spacer>
-                    <v-card-actions>
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            text
-                            color="primary"
-                            >
-                            Изпрати
-                        </v-btn>
-                    </v-card-actions>
+                   
                 </v-expansion-panel-content>
             </v-expansion-panel>
         </v-expansion-panels>

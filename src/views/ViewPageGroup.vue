@@ -11,6 +11,9 @@
       <cooperative-gallery > </cooperative-gallery>
 
       <members></members>
+
+      <kids-gallery></kids-gallery>
+
     </v-row>
   </div>
 </template>
@@ -19,12 +22,14 @@
 import PageInfo from '@/components/Common/PageInfo.vue'
 import CooperativeGallery from '@/components/Operative/CooperativeGallery.vue'
 import Members from '@/components/Operative/Members.vue'
+import KidsGallery from '@/components/Operative/KidsGallery.vue'
 
 export default {
   components: {
     PageInfo,
     CooperativeGallery,
-    Members
+    Members,
+    KidsGallery
   }
 }
 </script>
