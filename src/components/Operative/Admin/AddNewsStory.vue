@@ -1,7 +1,6 @@
 <template>
     <v-container>
-        <v-container >
-            
+           
             <v-row> 
                 <v-col> 
                     <v-text-field
@@ -42,7 +41,6 @@
                 <v-progress-circular indeterminate size="64"></v-progress-circular>
             </v-overlay>
  
-        </v-container>
     </v-container>
 </template>
 
