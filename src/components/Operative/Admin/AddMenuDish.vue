@@ -117,7 +117,6 @@ export default {
       this.$validator.validateAll().then(
         () => {
           if (!this.hasErrors) {
-            console.log('dasd')
             this.addNewDish(this.dishTitle, this.dishDescription, this.dishTypeID, this.dishPhoto, this.weekDayID)
           }
         }

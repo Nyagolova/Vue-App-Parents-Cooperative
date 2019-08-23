@@ -57,6 +57,22 @@ export const WeeklyScheduleService = {
     },
     firebase: {
         WeeklySchedule_Data: db.ref('CactusEvents')
+    },
+    methods: {
+        addEvent(EventColor, EventStartHour, EventEndHour, EventTitle, EventDetails, EventDate) {
+        
+            var CactusEvents = db.ref("CactusEvents");
+            var StartDate = EventDate + " " + EventStartHour;
+            var EndDate = EventDate + " " + EventEndHour;
+ 
+            CactusEvents.push({
+                color: EventColor,
+                details: EventDetails,
+                end:  EndDate,
+                name: EventTitle,
+                start : StartDate
+            }) 
+        } 
     } 
 };
 
