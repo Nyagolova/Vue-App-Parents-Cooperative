@@ -26,6 +26,7 @@ export const DailyMenuService = {
         addNewDish(DishTitle, DishDescription, DishTypeID, DishPhoto, DishWeekDay, DishType) {
             
             this.showLoading = true;
+            this.showSuccessFlag = false;
 
             var singleDish = DishWeekDay + "/Meals/" + DishTypeID
             var CactusMenu = db.ref("CactusMenu");
@@ -46,7 +47,7 @@ export const DailyMenuService = {
                             dishDetails: DishDescription,
                             dishPhotoUrl : DishPhototURL,
                             dishType: DishType
-                        }).then(console.log('service')) 
+                        }) 
                     }
                 )
             });
@@ -115,14 +116,13 @@ export const StoriesService = {
                 this.getImageURL(StoryPhotoName).then(
                     
                     StoryPhotoUrl => {
-                        console.log('get file url')
                         CactusStory.push({
                             StoryTitle: StoryTitle,
                             StoryText: StoryText,
                             StoryPhoto:  StoryPhotoUrl,
                             StoryDate: StoryDate,
                             StoryId : StoryId
-                        }).then( console.log('story added'))
+                        })
                     }
                 )
             });

@@ -1,8 +1,8 @@
 <template>
-  <v-container>
+  <v-container >
 
     <v-alert   dense   text   type="success" v-if="showSuccessMessage">
-      Успешно добавихте "{{dishTitle}}" в дневното меню!
+      Успешно добавихте ястие в дневното меню!
     </v-alert>
 
     <v-row>
@@ -118,22 +118,22 @@ export default {
       this.$validator.validateAll().then(
         () => {
           if (!this.hasErrors) {
-            this.addNewDish(this.dishTitle, this.dishDescription, this.dishTypeID, this.dishPhoto, this.weekDayID, this.dishType).then(console.log('komponent'))
+            this.addNewDish(this.dishTitle, this.dishDescription, this.dishTypeID, this.dishPhoto, this.weekDayID, this.dishType).then( 
+              () => {
+                this.clearAllTextfields();
+              }
+            )
           }
         }
       )
-
-      this.clearAllTextfields();
     },
     clearAllTextfields () {
-      if(this.showSuccessMessage) {
-        this.dishTitle = '';
-        this.dishDescription = '';
-        this.dishTypeID = '';
-        this.dishPhoto = '';
-        this.weekDayID = '';
-        this.dishType = '';
-      }
+      this.errors.items = []
+      this.dishTitle = '';
+      this.dishDescription = '';
+      this.dishPhoto = null;
+      this.weekDay = '';
+      this.dishType = '';
     } 
   }
 }
