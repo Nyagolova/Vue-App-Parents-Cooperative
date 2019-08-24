@@ -15,9 +15,9 @@ export const DailyMenuService = {
         DailyMenuService_Data: db.ref('CactusMenu')
     },
     methods: {
-        addNewDish(DishTitle, DishDescription, DishType, DishPhoto, DishWeekDay) {
+        addNewDish(DishTitle, DishDescription, DishTypeID, DishPhoto, DishWeekDay, DishType) {
            
-            var singleDish = DishWeekDay + "/Meals/" + DishType
+            var singleDish = DishWeekDay + "/Meals/" + DishTypeID
             var CactusMenu = db.ref("CactusMenu");
 
             var DishPhotoName = '/MenuPhotos/' + DishPhoto.name;
@@ -31,7 +31,8 @@ export const DailyMenuService = {
                         .set({
                             dishTitle: DishTitle,
                             dishDetails: DishDescription,
-                            dishPhotoUrl : DishPhototURL
+                            dishPhotoUrl : DishPhototURL,
+                            dishType: DishType
                         })
                     }
                 )
