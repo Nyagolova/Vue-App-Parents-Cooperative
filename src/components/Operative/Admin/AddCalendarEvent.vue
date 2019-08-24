@@ -1,6 +1,10 @@
 <template>
     <v-container>
 
+      <v-alert   dense   text   type="success" v-if="showSuccessMessage">
+        Успешно добавихте ново събитие в календара!
+      </v-alert>
+
       <v-row align="center"
             justify="center">
         
@@ -101,8 +105,8 @@
 
           <v-btn outlined color="cyan" :disabled="hasErrors" @click="UploadEvent()"> Добави събитие </v-btn>
 
-          <v-overlay :value="overlay">
-              <v-progress-circular indeterminate size="64"></v-progress-circular>
+          <v-overlay :value="showLoadingOverlay">
+            <v-progress-circular indeterminate size="64"></v-progress-circular>
           </v-overlay>
  
     </v-container>
@@ -126,7 +130,6 @@ export default {
           EventTitle: '',
           EventDetails: '',
           filedata: null,
-          overlay: false,
           date: new Date().toISOString().substr(0, 10),
           menu: false,
           modal: false,
@@ -146,10 +149,24 @@ export default {
           () => {
             if (!this.hasErrors) {
               this.addEvent(this.color, this.start, this.end, this.EventTitle,  this.EventDetails, this.date)
+                  .then( 
+                      () => {
+                          this.clearAllTextfields();
+                      }
+                  )
             }
           }
         )
-      }
+      },
+      clearAllTextfields () {
+        this.errors.items = []
+        this.start = '';
+        this.end = '';
+        this.EventTitle = '';
+        this.EventDetails = '';
+        this.color = 'pink';
+        this.date = new Date().toISOString().substr(0, 10);
+      } 
     }
 }
 </script>

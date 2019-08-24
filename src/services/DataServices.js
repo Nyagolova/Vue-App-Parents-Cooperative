@@ -71,13 +71,21 @@ export const DailyMenuService = {
 export const WeeklyScheduleService = {
     data() {
         return {
-            WeeklySchedule_Data: [] 
+            WeeklySchedule_Data: [],
+            showLoading: false,
+            showSuccessFlag: false    
         }
     },
     computed: {
         isWeeklyScheduleDataReady () {
             return this.WeeklySchedule_Data.length !== 0
-        } 
+        },
+        showLoadingOverlay  () {
+            return this.showLoading
+        },
+        showSuccessMessage () {
+            return this.showSuccessFlag
+        }   
     },
     firebase: {
         WeeklySchedule_Data: db.ref('CactusEvents')
@@ -88,14 +96,22 @@ export const WeeklyScheduleService = {
             var CactusEvents = db.ref("CactusEvents");
             var StartDate = EventDate + " " + EventStartHour;
             var EndDate = EventDate + " " + EventEndHour;
+
+            this.showLoading = true;
+            this.showSuccessFlag = false;
  
-            CactusEvents.push({
+            return CactusEvents.push({
                 color: EventColor,
                 details: EventDetails,
                 end:  EndDate,
                 name: EventTitle,
                 start : StartDate
-            }) 
+            }).then(
+                () => {
+                    this.showLoading = false;
+                    this.showSuccessFlag = true;
+                }
+            ) 
         },
         deleteEvent(event) {
             var CactusEvents = db.ref("CactusEvents");
@@ -131,6 +147,7 @@ export const StoriesService = {
             var CactusStory = db.ref("CactusNews");
             var StoryPhotoName = '/StoryPhotos/' + StoryPhoto.name;
             var imagesRef = storage.ref(StoryPhotoName);
+
             this.showLoading = true;
             this.showSuccessFlag = false;
 
