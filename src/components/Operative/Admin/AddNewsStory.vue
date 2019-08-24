@@ -1,6 +1,9 @@
 <template>
     <v-container>
-           
+        <v-alert   dense   text   type="success" v-if="showSuccessMessage">
+            Успешно добавихте новина!
+        </v-alert>
+
             <v-row> 
                 <v-col cols="8"> 
                     <v-text-field
@@ -41,7 +44,7 @@
 
             <v-btn outlined color="cyan" :disabled="hasErrors" @click="UploadStory()"> Добави новина </v-btn>
  
-            <v-overlay :value="overlay">
+            <v-overlay :value="showLoadingOverlay">
                 <v-progress-circular indeterminate size="64"></v-progress-circular>
             </v-overlay>
  
@@ -60,8 +63,7 @@ export default {
             todayDate: new Date().toLocaleString(),
             StoryTitle: '',
             StoryText: '',
-            filedata: null,
-            overlay: false
+            filedata: null
         }
     },
     computed: {
@@ -78,13 +80,23 @@ export default {
             this.$validator.validateAll().then(  
                 () => {
                     if (!this.hasErrors) {
-                        console.log('3242423')
                         this.addNewStory(this.StoryTitle, this.StoryText, this.filedata, this.storyID , this.todayDate)
+                        .then( 
+                            () => {
+                                this.clearAllTextfields();
+                            }
+                        )
                     }
                 }
             )
             
-        }
+        },
+        clearAllTextfields () {
+            this.errors.items = []
+            this.StoryTitle = '';
+            this.StoryText = '';
+            this.filedata = null;
+        } 
     } 
 }
 </script>

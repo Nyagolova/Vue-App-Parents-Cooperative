@@ -107,13 +107,21 @@ export const WeeklyScheduleService = {
 export const StoriesService = {
     data() {
         return {
-            Stories_Data: [] 
+            Stories_Data: [],
+            showLoading: false,
+            showSuccessFlag: false   
         }
     },
     computed: {
         isStoriesDataReady () {
             return this.Stories_Data.length !== 0
-        } 
+        },
+        showLoadingOverlay  () {
+            return this.showLoading
+        },
+        showSuccessMessage () {
+            return this.showSuccessFlag
+        }  
     },
     firebase: {
         Stories_Data: db.ref('CactusNews')
@@ -123,13 +131,18 @@ export const StoriesService = {
             var CactusStory = db.ref("CactusNews");
             var StoryPhotoName = '/StoryPhotos/' + StoryPhoto.name;
             var imagesRef = storage.ref(StoryPhotoName);
+            this.showLoading = true;
+            this.showSuccessFlag = false;
 
             return imagesRef.put(StoryPhoto).then( () => {
-
+                
                 this.getImageURL(StoryPhotoName).then(
-                    
                     StoryPhotoUrl => {
-                        CactusStory.push({
+
+                        this.showLoading = false;
+                        this.showSuccessFlag = true;
+
+                        return CactusStory.push({
                             StoryTitle: StoryTitle,
                             StoryText: StoryText,
                             StoryPhoto:  StoryPhotoUrl,
