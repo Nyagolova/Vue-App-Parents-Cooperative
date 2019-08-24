@@ -12,7 +12,7 @@
           v-for="(day, index) in DailyMenuService_Data"
           :key="index"
         > 
-          <daily-menu :DailyMenu="day.Meals">
+          <daily-menu :DailyMenu="day.Meals" :Weekday="index">
             {{day.Weekday}}
           </daily-menu>
         </v-col>

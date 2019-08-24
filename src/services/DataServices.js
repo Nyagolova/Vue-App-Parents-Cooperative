@@ -54,6 +54,15 @@ export const DailyMenuService = {
         },
         getDishImageURL (DishPhotoName) {
             return storage.ref().child(DishPhotoName).getDownloadURL() 
+        },
+        deleteDish(DishRef, DishType) {
+            var CactusMenu_SingleDish = db.ref("CactusMenu/" + DishRef);
+            return CactusMenu_SingleDish.set({
+                dishTitle: '',
+                dishDetails: '',
+                dishPhotoUrl : '',
+                dishType: DishType
+            }) 
         } 
     }
    
@@ -154,14 +163,6 @@ export const GroupInfoService = {
         Members_Data: db.ref('CactusMembers') 
     } ,
     methods: {
-        // getKidsGalleryData () {
-        //     return storage.ref('KidsGallery').listAll().then( res => {
- 
-                  
-        //         return res.items
-                  
-        //     });
-        // },
         getKidsGalleryData () {
             return storage.ref('KidsGallery').listAll().then( res => {
  
