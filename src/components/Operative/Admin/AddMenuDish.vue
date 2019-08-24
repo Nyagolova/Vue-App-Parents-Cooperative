@@ -1,13 +1,8 @@
 <template>
   <v-container>
 
-    <v-alert
-      dense
-      text
-      type="success"
-      v-if="showSuccessMessage"
-    >
-      Добавихте успешно "{{dishTitle}}"
+    <v-alert   dense   text   type="success" v-if="showSuccessMessage">
+      Успешно добавихте "{{dishTitle}}" в дневното меню!
     </v-alert>
 
     <v-row>
@@ -32,7 +27,6 @@
         ></v-select>
       </v-col>
     </v-row>
-
 
     <v-row>
       <v-col cols="8"> 
@@ -71,7 +65,7 @@
 
     <v-btn outlined color="cyan" :disabled="hasErrors" @click="onUploadDish()"> Добави ястие </v-btn>
 
-    <v-overlay :value="isDishAdded">
+    <v-overlay :value="showLoadingOverlay">
         <v-progress-circular indeterminate size="64"></v-progress-circular>
     </v-overlay>
 
@@ -81,8 +75,6 @@
 <script>
 
 import { DailyMenuService } from '@/services/DataServices'
-
-
 
 export default {
   data () {
@@ -107,7 +99,6 @@ export default {
       dishTitle: '',
       dishPhoto: null,
       dishDescription: '',
-      //overlay: false
     }
   },
   mixins: [DailyMenuService],
@@ -127,10 +118,22 @@ export default {
       this.$validator.validateAll().then(
         () => {
           if (!this.hasErrors) {
-            this.addNewDish(this.dishTitle, this.dishDescription, this.dishTypeID, this.dishPhoto, this.weekDayID, this.dishType)
+            this.addNewDish(this.dishTitle, this.dishDescription, this.dishTypeID, this.dishPhoto, this.weekDayID, this.dishType).then(console.log('komponent'))
           }
         }
       )
+
+      this.clearAllTextfields();
+    },
+    clearAllTextfields () {
+      if(this.showSuccessMessage) {
+        this.dishTitle = '';
+        this.dishDescription = '';
+        this.dishTypeID = '';
+        this.dishPhoto = '';
+        this.weekDayID = '';
+        this.dishType = '';
+      }
     } 
   }
 }

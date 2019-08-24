@@ -4,7 +4,7 @@ export const DailyMenuService = {
     data() {
         return {
             DailyMenuService_Data: [],
-            isDishAddedFlag: false,
+            showLoading: false,
             showSuccessFlag: false  
         }
     },
@@ -12,8 +12,8 @@ export const DailyMenuService = {
         isDailyMenuDataReady () {
             return this.DailyMenuService_Data.length !== 0
         },
-        isDishAdded  () {
-            return this.isDishAddedFlag
+        showLoadingOverlay  () {
+            return this.showLoading
         },
         showSuccessMessage () {
             return this.showSuccessFlag
@@ -25,7 +25,7 @@ export const DailyMenuService = {
     methods: {
         addNewDish(DishTitle, DishDescription, DishTypeID, DishPhoto, DishWeekDay, DishType) {
             
-            this.isDishAddedFlag = true;
+            this.showLoading = true;
 
             var singleDish = DishWeekDay + "/Meals/" + DishTypeID
             var CactusMenu = db.ref("CactusMenu");
@@ -36,17 +36,17 @@ export const DailyMenuService = {
             return imagesRef.put(DishPhoto).then( () => {
                 this.getDishImageURL(DishPhotoName).then(
                     DishPhototURL => {
-                        this.isDishAddedFlag = false;
+                        this.showLoading = false;
                         this.showSuccessFlag = true;
-
-                        CactusMenu
+ 
+                        return CactusMenu
                         .child(singleDish)
                         .set({
                             dishTitle: DishTitle,
                             dishDetails: DishDescription,
                             dishPhotoUrl : DishPhototURL,
                             dishType: DishType
-                        }) 
+                        }).then(console.log('service')) 
                     }
                 )
             });
