@@ -3,12 +3,20 @@ import { db, storage } from '@/services/firebaseInit'
 export const DailyMenuService = {
     data() {
         return {
-            DailyMenuService_Data: [] 
+            DailyMenuService_Data: [],
+            isDishAddedFlag: false,
+            showSuccessFlag: false  
         }
     },
     computed: {
         isDailyMenuDataReady () {
             return this.DailyMenuService_Data.length !== 0
+        },
+        isDishAdded  () {
+            return this.isDishAddedFlag
+        },
+        showSuccessMessage () {
+            return this.showSuccessFlag
         } 
     },
     firebase: {
@@ -16,7 +24,9 @@ export const DailyMenuService = {
     },
     methods: {
         addNewDish(DishTitle, DishDescription, DishTypeID, DishPhoto, DishWeekDay, DishType) {
-           
+            
+            this.isDishAddedFlag = true;
+
             var singleDish = DishWeekDay + "/Meals/" + DishTypeID
             var CactusMenu = db.ref("CactusMenu");
 
@@ -26,6 +36,9 @@ export const DailyMenuService = {
             return imagesRef.put(DishPhoto).then( () => {
                 this.getDishImageURL(DishPhotoName).then(
                     DishPhototURL => {
+                        this.isDishAddedFlag = false;
+                        this.showSuccessFlag = true;
+
                         CactusMenu
                         .child(singleDish)
                         .set({
@@ -33,7 +46,7 @@ export const DailyMenuService = {
                             dishDetails: DishDescription,
                             dishPhotoUrl : DishPhototURL,
                             dishType: DishType
-                        })
+                        }) 
                     }
                 )
             });

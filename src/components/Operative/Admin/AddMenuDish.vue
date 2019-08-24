@@ -1,5 +1,15 @@
 <template>
   <v-container>
+
+    <v-alert
+      dense
+      text
+      type="success"
+      v-if="showSuccessMessage"
+    >
+      Добавихте успешно "{{dishTitle}}"
+    </v-alert>
+
     <v-row>
       <v-col>
         <v-select
@@ -61,7 +71,7 @@
 
     <v-btn outlined color="cyan" :disabled="hasErrors" @click="onUploadDish()"> Добави ястие </v-btn>
 
-    <v-overlay :value="overlay">
+    <v-overlay :value="isDishAdded">
         <v-progress-circular indeterminate size="64"></v-progress-circular>
     </v-overlay>
 
@@ -97,7 +107,7 @@ export default {
       dishTitle: '',
       dishPhoto: null,
       dishDescription: '',
-      overlay: false
+      //overlay: false
     }
   },
   mixins: [DailyMenuService],
