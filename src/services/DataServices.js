@@ -137,7 +137,8 @@ export const GroupInfoService = {
     data() {
         return {
             Members_Data: [],
-            Gallery_Data: []
+            Gallery_Data: [],
+            KidsGallery_Data: []
         }
     },
     computed: {
@@ -150,6 +151,31 @@ export const GroupInfoService = {
     },
     firebase: {
         Gallery_Data: db.ref('CactusGallery'),
-        Members_Data: db.ref('CactusMembers')
-    } 
+        Members_Data: db.ref('CactusMembers') 
+    } ,
+    methods: {
+        // getKidsGalleryData () {
+        //     return storage.ref('KidsGallery').listAll().then( res => {
+ 
+                  
+        //         return res.items
+                  
+        //     });
+        // },
+        getKidsGalleryData () {
+            return storage.ref('KidsGallery').listAll().then( res => {
+ 
+                  
+                return res.items.forEach( itemRef =>  {
+                            storage.ref().child("/KidsGallery/" + itemRef.name).getDownloadURL()
+                            .then(
+                                url => {
+                                    this.KidsGallery_Data.push(url)
+                                }
+                            ) 
+                        }   
+                    )
+            });
+        }
+    }
 };
