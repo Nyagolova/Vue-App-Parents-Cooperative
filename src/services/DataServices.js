@@ -96,6 +96,10 @@ export const WeeklyScheduleService = {
                 name: EventTitle,
                 start : StartDate
             }) 
+        },
+        deleteEvent(event) {
+            var CactusEvents = db.ref("CactusEvents");
+            CactusEvents.child(event['.key']).remove();
         } 
     } 
 };

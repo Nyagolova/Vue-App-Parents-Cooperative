@@ -3,7 +3,7 @@
       <v-sheet height="600"   outlined >
         <v-calendar
           ref="calendar"
-          v-model="focus"
+          v-model="today"
           color="yellow"
           :events="Events"
           :event-color="getEventColor"
@@ -13,7 +13,6 @@
           :first-interval="first"
           :interval-count="count"
           @click:event="showEvent"
-          @click="testfnct"
           :weekdays="[1, 2, 3, 4, 5, 6, 0]"
           short-intervals
         >
@@ -35,7 +34,7 @@
               :color="selectedEvent.color"
               dark
             >
-              <v-btn icon v-if="userIsAuthenticated">
+              <v-btn icon v-if="userIsAuthenticated" @click="onDeleteEvent(selectedEvent); selectedOpen = false">
                 <v-icon>mdi-delete</v-icon>
               </v-btn>
 
@@ -63,13 +62,13 @@
 
 <script>
 
-import { authService, authenticate } from '@/services/AuthenticationServices'
+import { authService } from '@/services/AuthenticationServices'
+import { WeeklyScheduleService } from '@/services/DataServices'
 
 export default {
     props: ['Events'],
     data: () => ({
-        today: '2019-08-19',
-        focus: '2019-08-19',
+        today: new Date().toISOString().substr(0, 10),
         type: 'week',
         count: 12,
         first: 7,
@@ -77,28 +76,28 @@ export default {
         selectedElement: null,
         selectedOpen: false,
     }),
-    mixins : [authService, authenticate],
+    mixins : [authService, WeeklyScheduleService],
     methods: {
-        getEventColor (event) {
-          return event.color
-        },
-        showEvent ({ nativeEvent, event }) {
-          const open = () => {
-            this.selectedEvent = event
-            this.selectedElement = nativeEvent.target
-            setTimeout(() => this.selectedOpen = true, 10)
-          }
+      getEventColor (event) {
+        return event.color
+      },
+      showEvent ({ nativeEvent, event }) {
+        const open = () => {
+          this.selectedEvent = event
+          this.selectedElement = nativeEvent.target
+          setTimeout(() => this.selectedOpen = true, 10)
+        }
 
-          if (this.selectedOpen) {
-              this.selectedOpen = false
-              setTimeout(open, 10)
-          } else {
-              open()
-          }
-          nativeEvent.stopPropagation()
-        },
-      testfnct () {
-        console.log('ashdahs')
+        if (this.selectedOpen) {
+            this.selectedOpen = false
+            setTimeout(open, 10)
+        } else {
+            open()
+        }
+        nativeEvent.stopPropagation()
+      },
+      onDeleteEvent (event) {
+        this.deleteEvent(event)
       }
     }
     
