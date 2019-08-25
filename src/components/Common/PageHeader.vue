@@ -28,11 +28,13 @@
             centered
         >
             <v-tabs-slider color="yellow"></v-tabs-slider>
-            <v-tab to="/">Начало</v-tab>
-            <v-tab to="/weeklyschedule">Седмична програма</v-tab>
-            <v-tab to="/dailymenu">Дневно меню</v-tab>
-            <v-tab to="/about">За групата</v-tab>
-            <v-tab to="/prices">Цени</v-tab>
+            
+            <v-tab 
+                v-for="(tab,index) in tabsData" 
+                :key="index"
+                :to="tab.tabRoute"
+            > {{tab.tabName}}
+            </v-tab>
             
             <v-tab 
                 v-if="userIsAuthenticated" 
@@ -55,7 +57,29 @@ import { authService, authenticate } from '@/services/AuthenticationServices'
 export default {
     data () {
         return {
-            showAuthDialog: false
+            showAuthDialog: false,
+            tabsData: [
+                {
+                    tabRoute: '/',
+                    tabName: 'Начало'
+                },
+                {
+                    tabRoute: '/weeklyschedule',
+                    tabName: 'Седмична програма'
+                },
+                {
+                    tabRoute: '/dailymenu',
+                    tabName: 'Дневно меню'
+                },
+                {
+                    tabRoute: '/about',
+                    tabName: 'За групата'
+                },
+                {
+                    tabRoute: '/prices',
+                    tabName: 'Цени'
+                }
+            ]
         }
     },
     components: {
