@@ -65,4 +65,4 @@ Deployment using Netlify. Following this guide: https://cli.vuejs.org/guide/depl
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [https://github.com/Nyagolova/VueJSExam-ParentsCooperative/blob/master/LICENSE](LICENSE.md) file for details
